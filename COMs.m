@@ -6,6 +6,7 @@ T =40; % max_order
 MMT = PHFM_func(img, T);
 I_rec = PHFM_reconstruct_func(size(img,1), MMT);
 figure; subplot(1,2,1); imshow(img); subplot(1,2,2); imshow(uint8(abs(I_rec))); 
+
 function I_rec = PHFM_reconstruct_func(N, MMT)
     [X, Y] = meshgrid(linspace(-1, 1, N), linspace(1, -1, N));
     [theta, r] = cart2pol(X, Y);
@@ -54,6 +55,7 @@ function I_rec = PHFM_reconstruct_func(N, MMT)
         I_rec(:,:,c) = tmp;
     end
 end
+
 function MMT = PHFM_func(img, T)
 [N, ~, ~] = size(img);
 img = double(img);
