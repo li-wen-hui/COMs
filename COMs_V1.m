@@ -1,5 +1,5 @@
 clc;clear;
-image_path = 'LenaRGB.tiff';
+image_path = '\LenaRGB.tiff';
 img = imread(image_path);
 img = imresize(img, [256, 256]);
 T = 40; % max_order
