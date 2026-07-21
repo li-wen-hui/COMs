@@ -1,27 +1,11 @@
-clc;
-clear;
-
+clc;clear;
 image_path = 'LenaRGB.tiff';
-
 img = imread(image_path);
 img = imresize(img, [256, 256]);
-
 T = 40; % max_order
-
 MMT = PHFM_func_FFT(img, T, 256, 512);
-
 I_rec = PHFM_reconstruct_func(size(img,1), MMT);
-
-I_show = uint8(min(max(round(real(I_rec)), 0), 255));
-
-figure;
-subplot(1,2,1);
-imshow(img);
-title('Original image');
-
-subplot(1,2,2);
-imshow(I_show);
-title('PHFM reconstruction');
+figure; subplot(1,2,1); imshow(img); subplot(1,2,2); imshow(uint8(abs(I_rec))); 
 
 function MMT = PHFM_func_FFT(img, T, Mr, Mtheta)
 
